@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: json-server
+    ports:
+      - "8888:8888"
+    env_file:
+      - .env #Template .env ada di .env.example
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017" #port di sesuaikan di env file mu
